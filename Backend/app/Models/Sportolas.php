@@ -20,12 +20,4 @@ class Sportolas extends Model
         'created_at',
         'updated_at',
     ];
-
-    protected function casts(): array
-    {
-        return [
-            'diakokId' => 'integer',
-            'sportokId' => 'integer',                      
-        ];
-    }
 }

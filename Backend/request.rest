@@ -4,103 +4,9 @@
 @port = 8000
 @host = {{protocol}}{{hostname}}:{{port}}
 
-
-# ------------  lekérdezések ---------
-### get users
-get {{host}}/api/queryOsztalynevsor
-Accept: application/json
-
-### get Valakinek az osztálytársai
-get {{host}}/api/queryOsztalytasrsak/Ubul
-Accept: application/json
-
-### get Lapozós osztálynévsor
-get {{host}}/api/queryOsztalynevsorLimit/1/4
-Accept: application/json
-
-### get Lapozós osztálynévsor
-get {{host}}/api/queryOsztalynevsorLimit/3/4
-Accept: application/json
-
-### get Oldalszám lekérdező
-get {{host}}/api/queryHanyOldalVan/4
-Accept: application/json
-
-
-# ------------  /lekérdezések ---------
-
-
-
-
-# ------------  login, user ---------
-### login
-# @name login
-POST {{host}}/api/users/login 
-Accept: application/json
-Content-Type: application/json
-
-{
-    "email": "test@example.com",
-    "password": "123"
-}
-
-###
-@token = {{login.response.body.user.token}}
-
-### logout
-POST {{host}}/api/users/logout 
-Accept: application/json
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-
-### get users
-get {{host}}/api/users
-Accept: application/json
-Authorization: Bearer {{token}}
-
-### get user by Id
-get {{host}}/api/users/1
-Accept: application/json
-Authorization: Bearer {{token}}
-
-
-### post user
-post {{host}}/api/users
-Accept: application/json
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-    "name": "test3",
-    "email": "test3@example.com",
-    "password": "123"
-}
-
-### delete user by id
-delete {{host}}/api/users/4
-Accept: application/json
-Authorization: Bearer {{token}}
-
-### patch user by id
-patch {{host}}/api/users/2
-Accept: application/json
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-    "password": "1234"
-}
-
-
-
-
-# ------------  teszt ---------
 ### teszt
 get {{host}}/api/
-# ------------ /teszt ---------
 
-# ------------  sport ---------
 ### get sports
 get {{host}}/api/sports
 
@@ -112,28 +18,22 @@ get {{host}}/api/sports/2
 post {{host}}/api/sports
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
     "sportNev": "111"
 }
 
 ### delete sport by id
-delete {{host}}/api/sports/13
-Accept: application/json
-Authorization: Bearer {{token}}
+delete {{host}}/api/sports/12
 
 ### patch sport
 patch {{host}}/api/sports/9
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
     "sportNev": "yyy"
 }
-
-# ------------ /sport ---------
 
 # ------------  osztalies ---------
 ### get osztalies
@@ -146,7 +46,6 @@ get {{host}}/api/osztalies/2
 post {{host}}/api/osztalies
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
     "osztalyNev": "111"
@@ -154,14 +53,11 @@ Authorization: Bearer {{token}}
 
 ### delete osztalies by id
 delete {{host}}/api/osztalies/11
-Accept: application/json
-Authorization: Bearer {{token}}
 
 ### patch sport
 patch {{host}}/api/osztalies/10
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
     "osztalyNev": "10a"
@@ -181,11 +77,10 @@ get {{host}}/api/diaks/2
 post {{host}}/api/diaks
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
-    "osztalyId": 2,
-    "nev": "Etel",
+    "osztalyId": 1,
+    "nev": "Jenő",
     "neme": true,
     "szuletett": "2018-01-12",
     "helyseg": "Szolnok",
@@ -195,14 +90,11 @@ Authorization: Bearer {{token}}
 
 ### delete diaks by id
 delete {{host}}/api/diaks/8
-Accept: application/json
-Authorization: Bearer {{token}}
 
 ### patch sport
 patch {{host}}/api/diaks/9
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
     "osztalyId": 20,
@@ -217,33 +109,30 @@ Authorization: Bearer {{token}}
 get {{host}}/api/sportolas
 
 ### get sportolas by id
-get {{host}}/api/sportolas/2/5
+get {{host}}/api/sportolas/2/2
 
 ### post sportolas
 POST {{host}}/api/sportolas
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
     "diakokId": 6,
-    "sportokId": 6
+    "sportokId": 7
 }
 
 ### patch sportolas
-PATCH {{host}}/api/sportolas/2/7
+PATCH {{host}}/api/sportolas/6/6
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
-    
-    "sportokId": 6
+    "diakokId":6,
+    "sportokId": 7
 }
 
 ### delete sportolas by id
 DELETE {{host}}/api/sportolas/6/6
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer {{token}}
 # ---- /sportolas ----

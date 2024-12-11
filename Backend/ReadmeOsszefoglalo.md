@@ -32,7 +32,7 @@ DB_PASSWORD=
     -   Migrációk lekérdezése: `php artisan migrate:status`
 - Seeder futtatás:  `php artisan db:seed`
 
-- `php artisan make:controller UserController`
+
 
 # Laravel projekt létrehozás
 
@@ -443,37 +443,3 @@ public function run(): void
 ```
 
 3. seederek futtatása: `php artisan db:seed`
-
-
-# Cors kezelés
-[cors (gemini)](https://g.co/gemini/share/477e6307e707)
-A CORS egy olyan biztonsági mechanizmus, amely lehetővé teszi, hogy különböző domain-ekről származó weboldalak egymás erőforrásait hozzáférjék. Ez azért fontos, mert a böngészők alapértelmezett beállítása szerint csak az azonos domainről származó kéréseket engedélyezik. 
-Ha ezt nem állítanánk be, a kliens oldal nem férne hozzá az API erőforrásaihoz.
-A cors beállítások a http kérésre adott válasz fejlécében érkeznek, és ennek alapján befolyásolja a böngésző működését.
-
-- A cors beállítás létrehozása: `php artisan config:publish cors`
-- Létrejön egy **app/config/cors.php** fájl. Itt állíthatjuk be, hogy milyen **metódusokat**, illetve milyen **doménról** szolgálhat ki az API
-
-```php
-return [
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
-
-    // 'allowed_methods' => ['*'],
-    'allowed_methods' => ['OPTIONS','GET','POST','PATCH','DELETE'],
-
-    //*: Ez a beállítás engedélyezi a CORS-t bármely domainről érkező kérésekhez.
-    //A valóságban itt egy adott (egy-vagy több) domaint engedélyezünk.
-    'allowed_origins' => ['*'],
-
-    'allowed_origins_patterns' => [],
-
-    //Mely fejlécek engedélyezettek a kérésekben
-    'allowed_headers' => ['*'],
-
-    'exposed_headers' => [],
-
-    'max_age' => 0,
-
-    'supports_credentials' => false,
-];    
-```

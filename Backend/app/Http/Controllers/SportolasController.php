@@ -11,7 +11,7 @@ class SportolasController extends Controller
     public function index()
     {
         $rows = Sportolas::all();
-        return response()->json(['rows' => $rows], options: JSON_UNESCAPED_UNICODE);
+        return response()->json(['rows' => $rows], options:JSON_UNESCAPED_UNICODE);
     }
 
     public function store(StoreSportolasRequest $request)
@@ -19,8 +19,8 @@ class SportolasController extends Controller
         $diakokId  = $request['diakokId'];
         $sportokId = $request['sportokId'];
         $row = Sportolas::where('diakokId', $diakokId)
-            ->where('sportokId', $sportokId)
-            ->get();
+                    ->where('sportokId', $sportokId)
+                    ->get();
 
         if (count($row) != 0) {
             $data = [
@@ -30,16 +30,17 @@ class SportolasController extends Controller
             ];
         } else {
             $row = Sportolas::create($request->all());
-            $data = $row;
+            $data =$row;
         }
-        return response()->json($data, options: JSON_UNESCAPED_UNICODE);
+        return response()->json($data, options:JSON_UNESCAPED_UNICODE);
+
     }
 
     public function show(int $diakokId, int $sportokId)
     {
         $row = Sportolas::where('diakokId', $diakokId)
-            ->where('sportokId', $sportokId)
-            ->get();
+                    ->where('sportokId', $sportokId)
+                    ->get();
 
         if (count($row) != 0) {
             $data = ['rows' => $row];
@@ -50,95 +51,45 @@ class SportolasController extends Controller
                 'sportokId' => $sportokId,
             ];
         }
+        
+        return response()->json($data, options:JSON_UNESCAPED_UNICODE);
 
-        return response()->json($data, options: JSON_UNESCAPED_UNICODE);
     }
 
-    public function update(UpdateSportolasRequest $request, int $diakokId, int $sportokId)
+    public function update(UpdateSportolasRequest $request, int $id)
     {
-
-        $row = Sportolas::where('diakokId', $diakokId)
-            ->where('sportokId', $sportokId)
-            ->get();
-
-        if (count($row) > 0) {
-
-            try {
-                //Udate megtörténik
-                Sportolas::where('diakokId', $diakokId)
-                    ->where('sportokId', $sportokId)
-                    ->update(
-                        [
-                            'diakokId' => $request['diakokId'],
-                            'sportokId' => $request['sportokId']
-                        ]
-                    );
-
-                //visszakeressük        
-                $row = Sportolas::where('diakokId', $request['diakokId'])
-                    ->where('sportokId', operator: $request['sportokId'])
-                    ->get();
-                
-                $data = [
-                    'message' => 'Pach ok',
-                    'row' => $row
-                ];
-
-            } catch (\Illuminate\Database\QueryException $e) {
-                $data = [
-                    'Error' => 'Duplicate key error',
-                    'diakokId' => $request['diakokId'],
-                    'sportokId' => $request['sportokId']
-                ];
-            }
+        $row = Sportolas::find($id);
+        if ($row) {
+            $row->update($request->all());
+            $data = [
+                'row' => $row
+            ];
         } else {
             $data = [
                 'message' => 'Not found',
-                'diakokId' => $diakokId,
-                'sportokId' => $sportokId,
+                'id' => $id
             ];
         }
-
-        return response()->json($data, options: JSON_UNESCAPED_UNICODE);
-
-
-        // $row = Sportolas::find($id);
-        // if ($row) {
-        //     $row->update($request->all());
-        //     $data = [
-        //         'row' => $row
-        //     ];
-        // } else {
-        //     $data = [
-        //         'message' => 'Not found',
-        //         'id' => $id
-        //     ];
-        // }
-        // return response()->json($data, options: JSON_UNESCAPED_UNICODE);
+        return response()->json($data, options:JSON_UNESCAPED_UNICODE);
     }
 
-    public function destroy(int $diakokId, int $sportokId)
+    public function destroy(int $id)
     {
-        $row = Sportolas::where('diakokId', $diakokId)
-            ->where('sportokId', $sportokId)
-            ->get();
-        if (count($row) > 0) {
-            Sportolas::where('diakokId', $diakokId)
-                ->where('sportokId', $sportokId)
-                ->delete();
+        $row = Sportolas::find($id);
+        if ($row) {
+            $row->delete();
             $data = [
                 'message' => 'Deleted successfully',
-                'diakokId' => $diakokId,
-                'sportokId' => $sportokId,
+                'id' => $id
             ];
         } else {
             $data = [
                 'message' => 'Not found',
-                'diakokId' => $diakokId,
-                'sportokId' => $sportokId,
+                'id' => $id
             ];
         }
-
-        return response()->json($data, options: JSON_UNESCAPED_UNICODE);
+        
+        return response()->json($data, options:JSON_UNESCAPED_UNICODE);
     }
+
 }

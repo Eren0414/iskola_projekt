@@ -11,12 +11,7 @@ class OsztalyController extends Controller
     public function index()
     {
         $rows = Osztaly::all();
-        $data = [
-            'message' => 'ok',
-            'data' => $rows
-        ];
-
-        return response()->json($data, options:JSON_UNESCAPED_UNICODE);
+        return response()->json(['rows' => $rows], options:JSON_UNESCAPED_UNICODE);
     }
 
     public function store(StoreOsztalyRequest $request)
@@ -37,15 +32,12 @@ class OsztalyController extends Controller
         if ($row) {
             $row->update($request->all());
             $data = [
-                'message' => 'ok',
                 'row' => $row
             ];
         } else {
             $data = [
                 'message' => 'Not found',
-                'row' => [
-                    'id' => $id
-                ]
+                'id' => $id
             ];
         }
         return response()->json($data, options:JSON_UNESCAPED_UNICODE);
