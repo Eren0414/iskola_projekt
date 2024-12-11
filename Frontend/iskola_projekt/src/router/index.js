@@ -7,14 +7,19 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: HomeView
     },
     {
-      path: '/kartyak',
-      name: 'kartyak',
-      component: () => import('../views/KartyakView.vue'),
+      path: '/personstable',
+      name: 'personstable',
+      component: () => import('../views/PersonsTable.vue')
     },
-  ],
+    {
+      path: '/professionstable',
+      name: 'professionstable',
+      component: () => import('../views/ProfessionsTable.vue')
+    }
+  ]
 })
 
 export default router
