@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DiakController;
 use App\Http\Controllers\OsztalyController;
+use App\Http\Controllers\QueriesController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\SportolasController;
 use App\Models\Diak;
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get(uri: '/', action: function(): string{
     return 'API';
 });
+
+//QUERIES
+Route::get('/queryOsztalynevsor', [QueriesController::class, 'queryOsztalynevsor']);
+Route::get('/queryOsztalytarsak/{nev}', [QueriesController::class, 'queryOsztalytarsak']);
+Route::get('/queryOsztalyOldal/{param1}/{param2}', [QueriesController::class, 'queryOsztalyOldal']);
+Route::get('/queryOsztalyOldalSzam/{darab}', [QueriesController::class, 'queryOsztalyOldalSzam']);
 
 Route::get('/sports', [SportController::class, 'index']);
 Route::get('/sports/{id}', [SportController::class, 'show']);

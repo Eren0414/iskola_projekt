@@ -4,6 +4,28 @@
 @port = 8000
 @host = {{protocol}}{{hostname}}:{{port}}
 
+
+# ------------  lekérdezése ---------
+### get users
+get {{host}}/api/queryOsztalynevsor
+Accept: application/json
+
+### get users by id
+get {{host}}/api/queryOsztalytarsak/Ubul
+Accept: application/json
+
+### get users
+get {{host}}/api/queryOsztalyOldal/1/6
+Accept: application/json
+### get users
+get {{host}}/api/queryOsztalyOldalSzam/3
+Accept: application/json
+
+
+# ------------  /lekérdezések ---------
+
+
+
 ### teszt
 get {{host}}/api/
 
