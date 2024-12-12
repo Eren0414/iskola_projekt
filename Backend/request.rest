@@ -18,7 +18,7 @@ Accept: application/json
 get {{host}}/api/queryOsztalyOldal/1/6
 Accept: application/json
 ### get users
-get {{host}}/api/queryOsztalyOldalSzam/3
+get {{host}}/api/queryOsztalyOldalSzam/4
 Accept: application/json
 
 
