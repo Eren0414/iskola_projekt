@@ -1,9 +1,18 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+<template>
+  <h2>Home</h2>
+  <Counter/>
+</template>
+
+<script>
+import Counter from '@/components/Counter.vue';
+import { useCounterStore } from '@/stores/counter';
+export default {
+  components: {
+    Counter
+  }
+}
 </script>
 
-<template>
-  <main>
-    
-  </main>
-</template>
+<style>
+
+</style>

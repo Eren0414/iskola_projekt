@@ -37,6 +37,7 @@
 import axios from 'axios';
 import Cards from '@/components/Cards.vue';
 import Paginator from '../components/Paginator.vue';
+import { BASE_URL } from '@/helpers/baseUrls';
 export default {
   components: {
     Cards,
