@@ -8,60 +8,84 @@ use App\Http\Requests\UpdateSportRequest;
 
 class SportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $rows = Sport::all();
-        return response()->json(['rows' => $rows], options:JSON_UNESCAPED_UNICODE);
+        // $products = Sport::all();
+        $rows = Sport::orderBy('sportNev', 'asc')->get();
+        $data = [
+            'message' => 'ok',
+            'data' => $rows
+        ];
+        return response()->json($data, options: JSON_UNESCAPED_UNICODE);
     }
 
     public function store(StoreSportRequest $request)
     {
-        $rows = Sport::create(attributes: $request->all());
-        return response()->json(['rows' => $rows], options:JSON_UNESCAPED_UNICODE);
+        $row = Sport::create($request->all());
+        $data = [
+            'message' => 'ok',
+            'data' => $row
+        ];
+        return response()->json($data, options: JSON_UNESCAPED_UNICODE);
     }
 
     public function show(int $id)
     {
-        $rows = Sport::find($id);
-        return response()->json(['rows' => $rows], options:JSON_UNESCAPED_UNICODE);
+        $row = Sport::find($id);
+        if ($row) {
+            $data = [
+                'message' => 'ok',
+                'data' => $row
+            ];
+        } else {
+            $data = [
+                'message' => 'Not found',
+                'data' => [
+                    'id' => $id
+                ]
+            ];
+        }
+        return response()->json($data, options: JSON_UNESCAPED_UNICODE);
     }
 
-    public function update(UpdateSportRequest $request, int $id)
+    public function update(UpdateSportRequest $request,  $id)
     {
         $row = Sport::find($id);
         if ($row) {
             $row->update($request->all());
             $data = [
-                'row' => $row
+                'message' => 'ok',
+                'data' => $row
             ];
         } else {
             $data = [
                 'message' => 'Not found',
-                'id' => $id
+                'data' => [
+                    'id' => $id
+                ]
             ];
         }
-        return response()->json($data, options:JSON_UNESCAPED_UNICODE);
+        return response()->json($data, options: JSON_UNESCAPED_UNICODE);
     }
 
-    public function destroy(int $id)
-    {
+    public function destroy(int $id) {
         $row = Sport::find($id);
         if ($row) {
             $row->delete();
             $data = [
-                'message' => 'Deleted successfully',
-                'id' => $id
+                'message' => 'ok',
+                'data' => [
+                    'id' => $id
+                ]
             ];
         } else {
             $data = [
                 'message' => 'Not found',
-                'id' => $id
+                'data' => [
+                    'id' => $id
+                ]
             ];
         }
-        
-        return response()->json($data, options:JSON_UNESCAPED_UNICODE);
+        return response()->json($data, options: JSON_UNESCAPED_UNICODE);
     }
 }

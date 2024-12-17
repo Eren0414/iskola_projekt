@@ -11,7 +11,7 @@ class UpdateSportolasRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateSportolasRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'diakokId' => 'required|integer',
+            'sportokId' => 'required|integer',
+
         ];
     }
 }

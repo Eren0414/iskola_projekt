@@ -2,10 +2,17 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use App\Models\User;
+use Illuminate\Container\Attributes\DB as AttributesDB;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+// use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
+
     /**
      * A basic test example.
      */
@@ -13,4 +20,6 @@ class ExampleTest extends TestCase
     {
         $this->assertTrue(true);
     }
+
+    
 }

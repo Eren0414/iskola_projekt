@@ -22,7 +22,7 @@ class SportSeeder extends Seeder
             ['id' => 6, 'sportNev' => 'Kézilabda'],
             ['id' => 7, 'sportNev' => 'Lábtoll-labda'],
             ['id' => 8, 'sportNev' => 'Röplabda'],
-            ['id' => 9, 'sportNev' => 'Karate'],
+            ['id' => 9, 'sportNev' => 'Cselgáncs'],
         ];
     
         if (Sport::count() === 0) {

@@ -45,7 +45,7 @@ export default {
   },
   data() {
     return {
-      urlApi: "http://localhost:8000/api",
+      urlApi: BASE_URL,
       cards: [], // Kártyák
       currentPage: 1, // Aktuális oldal
       totalPages: 1, // Összes oldal

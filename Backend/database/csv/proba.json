@@ -1,0 +1,37 @@
+[
+    {
+        "message": "ok",
+        "data": [
+            { "osztalyNev": "1.a", "nev": "Ágnes" },
+            { "osztalyNev": "1.a", "nev": "Anikó" },
+            { "osztalyNev": "1.a", "nev": "Béla" },
+            { "osztalyNev": "1.a", "nev": "Enikő" },
+            { "osztalyNev": "1.a", "nev": "Feri" },
+            { "osztalyNev": "1.a", "nev": "Péter" },
+            { "osztalyNev": "1.a", "nev": "Rudi" },
+            { "osztalyNev": "1.b", "nev": "Zolika" },
+            { "osztalyNev": "1.b", "nev": "Géza" }
+        ]
+    },
+    {
+        "message": "ok",
+        "data": [
+            {
+                "osztalyNev": "1.a",
+                "tanulok": [
+                    { "nev": "Ágnes" },
+                    { "nev": "Anikó" },
+                    { "nev": "Béla" },
+                    { "nev": "Enikő" },
+                    { "nev": "Feri" },
+                    { "nev": "Péter" },
+                    { "nev": "Rudi" }
+                ]
+            },
+            {
+                "osztalyNev": "1.b",
+                "tanulok": [{ "nev": "Zolika" }, { "nev": "Géza" }]
+            }
+        ]
+    }
+]

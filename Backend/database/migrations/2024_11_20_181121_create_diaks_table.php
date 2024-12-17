@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('diaks', function (Blueprint $table) {
-            $table->Integer('id')->autoIncrement();
-            $table->Integer('osztalyId');
+            $table->Integer('id')->unsigned()->autoIncrement();
+            $table->Integer('osztalyId')->unsigned();
             $table->foreign('osztalyId')->references('id')->on('osztalies'); //Idegen kulcs
             $table->string('nev', 50)->notNull();
             $table->boolean('neme')->default(true);

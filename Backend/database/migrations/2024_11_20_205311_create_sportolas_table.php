@@ -12,13 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sportolas', function (Blueprint $table) {
-            $table->Integer('diakokId');
-            $table->Integer('sportokId');
+            $table->Integer('diakokId')->unsigned();
+            $table->Integer('sportokId')->unsigned();
             $table->foreign('diakokId')->references('id')->on('diaks');
             $table->foreign('sportokId')->references('id')->on('sports');
             $table->primary(['diakokId', 'sportokId']);
             $table->timestamps();
-
         });
     }
 

@@ -29,7 +29,6 @@ class StoreDiakRequest extends FormRequest
             'helyseg' => 'string|min:2',
             'osztondij' => 'numeric',
             'atlag' => 'numeric',
-
         ];
     }
 }

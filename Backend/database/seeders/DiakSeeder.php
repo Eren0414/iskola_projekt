@@ -13,6 +13,7 @@ class DiakSeeder extends Seeder
      */
     public function run(): void
     {
+
         $data = [
             ['id' => 1, 'osztalyId' => 1, 'nev' => 'Rudi', 'neme' => true, 'szuletett' => '2018-01-12', 'helyseg' => 'Szolnok', 'osztondij' => 5000,  'atlag' => 3.5],
             ['id' => 2, 'osztalyId' => 1, 'nev' => 'Péter', 'neme' => true, 'szuletett' => '2018-03-02', 'helyseg' => 'Szolnok', 'osztondij' => 5000,  'atlag' => 3.7],

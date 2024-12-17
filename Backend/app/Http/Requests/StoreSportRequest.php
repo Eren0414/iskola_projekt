@@ -11,6 +11,7 @@ class StoreSportRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        //Mindenki jogosult a módosító műveletekre
         return true;
     }
 
